@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "texture", "texture\texture.vcxproj", "{F95E694B-825E-4372-9B1C-DAF90A9034FC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "shader", "..\shader\shader\shader.vcxproj", "{50A51B67-3395-4D04-8014-C511936C0150}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F95E694B-825E-4372-9B1C-DAF90A9034FC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{F95E694B-825E-4372-9B1C-DAF90A9034FC}.Debug|Win32.Build.0 = Debug|Win32
+		{F95E694B-825E-4372-9B1C-DAF90A9034FC}.Release|Win32.ActiveCfg = Release|Win32
+		{F95E694B-825E-4372-9B1C-DAF90A9034FC}.Release|Win32.Build.0 = Release|Win32
+		{50A51B67-3395-4D04-8014-C511936C0150}.Debug|Win32.ActiveCfg = Debug|Win32
+		{50A51B67-3395-4D04-8014-C511936C0150}.Debug|Win32.Build.0 = Debug|Win32
+		{50A51B67-3395-4D04-8014-C511936C0150}.Release|Win32.ActiveCfg = Release|Win32
+		{50A51B67-3395-4D04-8014-C511936C0150}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
