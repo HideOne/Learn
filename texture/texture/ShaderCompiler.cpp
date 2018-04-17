@@ -46,6 +46,11 @@ void ShaderCompiler::useProgram()
 	glUseProgram(ID);
 }
 
+void ShaderCompiler::setInt(const char* name, const int num)
+{
+	glUniform1i(glGetUniformLocation(ID, name), num);
+}
+
 void ShaderCompiler::compile(const GLchar* vertexCode, const GLchar* fragmentCode)
 {
 	if (strlen(vertexCode) < 5 || strlen(fragmentCode) < 5)
@@ -75,7 +80,7 @@ GLuint ShaderCompiler::CreateShader(char const *code, GLenum ShderType)
 	if (!errnum)
 	{
 		glGetShaderInfoLog(shader, 512, NULL, info);
-		LOG(info);
+		LOG(info << code);
 		return -1;
 	}
 

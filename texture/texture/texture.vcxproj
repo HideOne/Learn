@@ -81,12 +81,14 @@
   <ItemGroup>
     <ClInclude Include="Command.h" />
     <ClInclude Include="ShaderCompiler.h" />
+    <ClInclude Include="stb_image.h" />
     <ClInclude Include="window.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ShaderCompiler.cpp" />
+    <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

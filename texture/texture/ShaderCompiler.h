@@ -13,6 +13,7 @@ public:
 	~ShaderCompiler();
 	void useProgram();
 	GLuint ID;
+	void setInt(const char* name, const int num);
 
 private:
 	void compile(const GLchar* vertexCode, const GLchar* fragmentCode);
