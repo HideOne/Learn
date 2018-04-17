@@ -14,6 +14,7 @@ window::window()
 
 window::~window()
 {
+	glfwTerminate();
 }
 
 window* window::getInstance()
@@ -59,21 +60,7 @@ void window::initWindow(const int width, const int heigh, const char* title)
 	glViewport(0, 0, 800, 600);
 	glfwSetFramebufferSizeCallback(window, window::SizeCallBack);
 	
-	//glViewport(0, 0, width, heigh);
-	while (!glfwWindowShouldClose(window))
-	{
-		//检查事件
-		glfwPollEvents();
-		//交换缓冲
-		glfwSwapBuffers(window);
-		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
-
-		loop();
-
-	}
-
-	glfwTerminate();
+	win = window;
 }
 
 void window::SizeCallBack(GLFWwindow* wind, int width, int height)

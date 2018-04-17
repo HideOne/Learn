@@ -11,7 +11,8 @@ public:
 	void initWindow(const int width, const int heigh, const char* title);
 	glLoop loop;
 	~window();
-	
+	GLFWwindow* win;
+
 private:
 	static void SizeCallBack(GLFWwindow* wind, int width, int height);
 	window();
