@@ -1,7 +1,7 @@
 #include "ShaderCompiler.h"
 #include "Command.h"
 
-ShaderCompiler::ShaderCompiler(const GLchar* vertextPath, const GLchar* fragmentPath)
+ShaderCompiler::ShaderCompiler(const GLchar* vertextPath, const GLchar* fragmentPath) : aphce(0.2)
 {
 	std::string vertextCode;
 	std::string fragmentCode;
@@ -49,6 +49,11 @@ void ShaderCompiler::useProgram()
 void ShaderCompiler::setInt(const char* name, const int num)
 {
 	glUniform1i(glGetUniformLocation(ID, name), num);
+}
+
+void ShaderCompiler::setFloat(const char* name, const float num)
+{
+	glUniform1f(glGetUniformLocation(ID, name), num);
 }
 
 void ShaderCompiler::compile(const GLchar* vertexCode, const GLchar* fragmentCode)

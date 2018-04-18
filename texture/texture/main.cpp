@@ -5,6 +5,12 @@
 #include "GLFW/glfw3.h"
 #include "ShaderCompiler.h"
 #include "stb_image.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
+
+void processInput(GLFWwindow* win,  ShaderCompiler* shader);
 
 float vertices1[] = {
 	//位置						颜色			  纹理
@@ -24,10 +30,10 @@ int main()
 
 	float vertices[] = {
 		// positions          // colors           // texture coords
-		0.5f, 0.5f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f, 1.0f, // top right
-		0.5f, -0.5f, 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f, // bottom right
-		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, // bottom left
-		-0.5f, 0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f  // top left 
+		0.5f, 0.5f, 0.0f,	1.0f, 0.0f, 0.0f,	1.0f, 1.0f, // top right
+		0.5f, -0.5f, 0.0f,	0.0f, 1.0f, 0.0f,	1.0f, 0.0f, // bottom right
+		-0.5f, -0.5f, 0.0f, 0.0f, 0.0f, 1.0f,	0.0f, 0.0f, // bottom left
+		-0.5f, 0.5f, 0.0f,	1.0f, 1.0f, 0.0f,	0.0f, 1.0f  // top left 
 	};
 	unsigned int indices[] = {
 		0, 1, 3, // first triangle
@@ -74,8 +80,8 @@ int main()
 	//为当前文理对象设置环绕,过滤方式
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 
 	//加载并执行文理
@@ -102,8 +108,8 @@ int main()
 	glBindTexture(GL_TEXTURE_2D, texture1);
 
 	//为当前文理对象设置环绕,过滤方式
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -128,19 +134,45 @@ int main()
 
  	//glBindTexture(GL_TEXTURE_2D, texture);
     //glBindVertexArray(VAO);
+
+	//将向量(1, 0, 0)位移(1,1,0)个单位
+	glm::vec4 vec(1.0f, 0.0f, 0.0f, 1.0f);
+	glm::mat4 trans;
+	trans = glm::translate(trans, glm::vec3(1.0f, 1.0f, 0.0f));
 	
+	vec = trans * vec;
+	LOG(vec.x << "  " << vec.y << " " << vec.z);
+	
+
+	//将文理逆时针旋转90度。然后缩放0.5倍
+	
+	//LOG(trans1.length());
+	//trans1 = glm::rotate(trans1, glm::radians(90.f), glm::vec3(0.0, 0.0, -1.0));
+	
+	//trans1 = glm::translate(trans1, glm::vec3(0.5f, -0.5f, 0));
+    //trans1 = glm::rotate(trans1, glm::radians(90.0f), glm::vec3(0.0, 0.0, -1.0));
+	//trans1 += glm::scale(trans1, glm::vec3(0.5, 0.5, 0.5));
+	
+	//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans1));
 
 	//glViewport(0, 0, width, heigh);
 	while (!glfwWindowShouldClose(win->win))
 	{
+		processInput(win->win, &shader);
+
 		//检查事件
 		glfwPollEvents();
 		//交换缓冲
 		glfwSwapBuffers(win->win);
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
-		//glBindTexture(GL_TEXTURE_2D, texture);
-		
+		glm::mat4 trans1;
+		trans1 = glm::translate(trans1, glm::vec3(0.5f, -0.5f, 0));
+		trans1 = glm::rotate(trans1, (float)glfwGetTime(), glm::vec3(0.0, 0.0, -1.0));
+		//trans1 += glm::scale(trans1, glm::vec3(0.5, 0.5, 0.5));
+
+		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans1));
+
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glActiveTexture(GL_TEXTURE1);
@@ -160,4 +192,14 @@ int main()
 	glDeleteBuffers(1, &EBO);
 }
 
-
+void processInput(GLFWwindow* win,  ShaderCompiler* shader)
+{
+	if (glfwGetKey(win, GLFW_KEY_UP) == GLFW_PRESS)
+	{
+		shader->addApche("point");
+	}
+	if (glfwGetKey(win, GLFW_KEY_DOWN) == GLFW_PRESS)
+	{
+		shader->Subtract("point");
+	}
+}
