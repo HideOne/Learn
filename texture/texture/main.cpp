@@ -25,6 +25,50 @@ float texCoords[] = {
 	0.5f, 1.0f
 };
 
+float verticess[] = {
+	-0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+	0.5f, -0.5f, -0.5f, 1.0f, 0.0f,
+	0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+	0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+	-0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f, 0.0f, 0.0f,
+
+	-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+	0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+	0.5f, 0.5f, 0.5f, 1.0f, 1.0f,
+	-0.5f, 0.5f, 0.5f, 0.0f, 1.0f,
+	-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+
+	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+	-0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+	-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+	-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+	-0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+
+	0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+	0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+	0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+	0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+	0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+	0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+
+	-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+	0.5f, -0.5f, -0.5f, 1.0f, 1.0f,
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+	0.5f, -0.5f, 0.5f, 1.0f, 0.0f,
+	-0.5f, -0.5f, 0.5f, 0.0f, 0.0f,
+	-0.5f, -0.5f, -0.5f, 0.0f, 1.0f,
+
+	-0.5f, 0.5f, -0.5f, 0.0f, 1.0f,
+	0.5f, 0.5f, -0.5f, 1.0f, 1.0f,
+	0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+	0.5f, 0.5f, 0.5f, 1.0f, 0.0f,
+	-0.5f, 0.5f, 0.5f, 0.0f, 0.0f,
+	-0.5f, 0.5f, -0.5f, 0.0f, 1.0f
+};
+
 int main()
 {
 
@@ -47,7 +91,7 @@ int main()
 	GLuint VBO;
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, sizeof(verticess), &verticess, GL_STATIC_DRAW);
 
 	
 	ShaderCompiler shader("shader/shader.vs", "shader/shader.fs");
@@ -57,13 +101,13 @@ int main()
 	glBindVertexArray(VAO);
 
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	//颜色属性
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
+	//glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	//glEnableVertexAttribArray(1);
 	//紋理屬性
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(2);
 
 	GLuint EBO;
@@ -156,6 +200,31 @@ int main()
 	//glUniformMatrix4fv(glGetUniformLocation(shader.ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans1));
 
 	//glViewport(0, 0, width, heigh);
+
+	//建立矩阵模型
+	glm::mat4 model; 
+	model = glm::rotate(model, glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+
+	//观察矩阵
+	glm::mat4 view;
+	view = glm::translate(view, glm::vec3(0.0f, 0.0f, -3.0f));
+
+	//投影矩阵
+	glm::mat4 projection;
+	projection = glm::perspective(glm::radians(45.0f), 800.0f / 600, 0.1f, 100.0f);
+
+	///int modelLoc = glGetUniformLocation(shader.ID, "model");
+	//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+	int viewlLoc = glGetUniformLocation(shader.ID, "view");
+	glUniformMatrix4fv(viewlLoc, 1, GL_FALSE, glm::value_ptr(view));
+
+	int projectionLoc = glGetUniformLocation(shader.ID, "projection");
+	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
+
+	
+
 	while (!glfwWindowShouldClose(win->win))
 	{
 		processInput(win->win, &shader);
@@ -166,22 +235,30 @@ int main()
 		glfwSwapBuffers(win->win);
 		glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT);
+#if 1
 		glm::mat4 trans1;
-		trans1 = glm::translate(trans1, glm::vec3(0.5f, -0.5f, 0));
+		//trans1 = glm::translate(trans1, glm::vec3(0.5f, -0.5f, 0));
 		trans1 = glm::rotate(trans1, (float)glfwGetTime(), glm::vec3(0.0, 0.0, -1.0));
 		//trans1 += glm::scale(trans1, glm::vec3(0.5, 0.5, 0.5));
 
 		glUniformMatrix4fv(glGetUniformLocation(shader.ID, "transform"), 1, GL_FALSE, glm::value_ptr(trans1));
 
+		model = glm::rotate(model, (float)glfwGetTime() * glm::radians(50.0f), glm::vec3(0.5f, 1.0f, 0.0f));
+		int modelLoc = glGetUniformLocation(shader.ID, "model");
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, texture);
 		glActiveTexture(GL_TEXTURE1);
 		glBindTexture(GL_TEXTURE_2D, texture1);
-
+		glUseProgram(VAO);
 		//shader.useProgram();
 		glBindVertexArray(VAO);
 		//glDrawArrays(GL_TRIANGLES, 0, 3);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, NULL);
+		//glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, NULL);
+#endif
 	
 	}
 
