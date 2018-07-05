@@ -87,6 +87,11 @@ void ShaderManager::CompileShader(const char* vertexCode, const char* fragmentCo
 	CreateShaderProgram(vertexShader, fragmentShader);
 }
 
+void ShaderManager::setMat4(const std::string &name, const glm::mat4 &value)
+{
+	glUniformMatrix4fv(glGetUniformLocation(ID, name.c_str()), 1, GL_FALSE, &value[0][0]);
+}
+
 GLint ShaderManager::CreateShader(char const *code, GLenum ShderType)
 {
 	unsigned int shader = glCreateShader(ShderType);

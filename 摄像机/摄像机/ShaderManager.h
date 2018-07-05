@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include <fstream>
+#include <glm/glm.hpp>
 
 class ShaderManager
 {
@@ -24,6 +25,7 @@ public:
 	void setInt(const std::string &name, int value) const;
 	void setFloat(const std::string &name, float value) const;
 	void CompileShader(const char* vertexCode, const  char* fragmentCode);
+	void setMat4(const std::string &name, const glm::mat4 &value);
 
 	//≥Ã–ÚID
 	unsigned int ID;
