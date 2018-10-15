@@ -19,17 +19,64 @@ def route(path):
 def center():
 	data = get_file_data("./templates/center.html")
 	# re.sub(r"\{%content%\}", , data)
-	db_data = DB.execute("select * from info;")
-	print(db_data)
-	if data:
-		re.sub(r"\{%content%\}", db_data, str(data))
+	db_data = DB.execute("select * from info order by id;")
+	print('查询成功')
+	tmp = data.decode("utf-8")
+	print(type(tmp))
+	content = str()
+	if db_data:
+		print("==============center1===============")
+		for item in db_data: 
+			content += '''
+		    <tr>
+			    <th>%s</th>
+			    <th>%s</th>
+			    <th>%s</th>
+			    <th>%s</th>
+			    <th>%s(元)</th>
+			    <th>%s</th>
+			    <th style="color:red">hehe</th>
+			    <th>nono</th>
+			    <th>del</th>
+			</tr>
+			''' %(item[1], item[2], item[3], item[4], item[5], item[6])
 
+		print(content)
+		print("==============center2===============")
+		tmp = re.sub(r"content1", content, tmp)
+		# tmp.replace("content1", content)
+		print("==============center3===============")
+
+	print(tmp)
+	data = bytes(tmp, encoding='utf8')
+	print("==============center4===============")
 	return data
 
 
 @route("/index.html")
 def index():
 	data = get_file_data("./templates/index.html")
+	db_data = DB.execute("select * from info order by id;")
+	content = str()
+	tmp = data.decode("utf-8")
+	if db_data:
+		for item in db_data:
+			content += ''' 
+			<tr>
+		        <th>%s</th>
+		        <th>%s</th>
+		        <th>%s</th>
+		        <th>%s</th>
+		        <th>%s</th>
+		        <th>%s(元)</th>
+		        <th>%s</th>
+		        <th>%s</th>
+		        <th>添加自选</th>
+		    </tr>
+			''' %(item[0] ,item[1], item[2], item[3], item[4], item[5], item[6], item[7])
+
+		tmp = re.sub(r"\{%content%\}", content, tmp)
+		data = bytes(tmp, encoding='utf8')
 
 	return data
 
