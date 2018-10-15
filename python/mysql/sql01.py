@@ -8,7 +8,7 @@ class JD(object):
 		self.conn = conn
 
 
-	def __delattr__(self):
+	def __del__(self):
 		self.cursor.close()
 		self.conn.close()
 
@@ -17,10 +17,14 @@ class JD(object):
 	def get_user_select():
 		print("输入选择")
 		print("1.所有商品")
+
+
+	def get_all_brands(self):
 		print("2.所有商品类型")
 		print("3.所有商品品牌")
 		print("4.退出程序")
 		return input("请输入选择序号")
+
 
 	def run_sql(self, sql):
 		self.cursor.execute(sql)
@@ -36,9 +40,6 @@ class JD(object):
 	def get_all_kinds(self):
 		sql = "select * from goods_cates;"
 		self.run_sql(sql)	
-
-		
-	def get_all_brands(self):
 		sql = "select * from goods_brands;"	
 		self.run_sql(sql)
 

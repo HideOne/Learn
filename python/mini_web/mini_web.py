@@ -3,7 +3,7 @@ import mini_mysql
 import re
 
 path_list = dict()
-DB = mini_mysql.Mini_mysql("localhost", "root", "asd123", "stock_db", 3306)
+DB = mini_mysql.Mini_mysql("asd123", "stock_db")
 
 def route(path):
 	def call_fun(func):
