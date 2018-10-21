@@ -3,7 +3,7 @@ import pymysql
 
 
 class Mini_mysql(object):
-    def __init__(self, host="localhost", user="root", password="", db="", port=3306):
+    def __init__(self, password="", db="", user="root", host="localhost", port=3306):
         print("==========创建数据库对象成功======")
         print(host, user, password, db, port)
         db = pymysql.connect(host=host, user=user, password=password,
