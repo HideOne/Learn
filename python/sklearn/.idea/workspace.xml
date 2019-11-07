@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="00a73ff4-444d-4d98-92f8-c79d9d04355c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/01_决策树案例一：鸢尾花数据分类-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/01_决策树案例一：鸢尾花数据分类-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ipynb_checkpoints/01_随机森林案例一：宫颈癌预测-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/.ipynb_checkpoints/01_随机森林案例一：宫颈癌预测-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_决策树案例一：鸢尾花数据分类.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/01_决策树案例一：鸢尾花数据分类.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/01_随机森林案例一：宫颈癌预测.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/01_随机森林案例一：宫颈癌预测.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../imind/-flu- = -flux-流.imx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../imind/-rect-正，直.imx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../imind/-st- = -sist- = -stat- = -stin- = -stem- 立，站.imx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../imind/-techn(o)-  技术，艺术.imx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../imind/9.-press-压，按.imx" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,36 +15,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_决策树案例一：鸢尾花数据分类.ipynb">
-          <provider selected="true" editor-type-id="jupyter-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/01_随机森林案例一：宫颈癌预测.ipynb">
-          <provider selected="true" editor-type-id="jupyter-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://E:/Python/Python37/Lib/site-packages/sklearn/impute/_base.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="155" column="17" selection-start-line="155" selection-start-column="4" selection-end-line="155" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://E:/Python/Python37/Lib/site-packages/sklearn/model_selection/_split.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="38855">
-              <caret line="2061" column="15" selection-start-line="2061" selection-start-column="15" selection-end-line="2061" selection-end-column="15" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -60,7 +32,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -72,12 +43,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -103,16 +75,17 @@
       <updated>1572482300038</updated>
       <workItem from="1572482303315" duration="359000" />
       <workItem from="1572529439599" duration="647000" />
+      <workItem from="1573053429556" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1006000" />
+    <option name="totallyTimeSpent" value="1035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2272118" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22989276" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -154,13 +127,6 @@
     <entry file="file://$PROJECT_DIR$/01_决策树案例一：鸢尾花数据分类.ipynb">
       <provider selected="true" editor-type-id="jupyter-editor" />
     </entry>
-    <entry file="file://E:/Python/Python37/Lib/site-packages/sklearn/model_selection/_split.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="38855">
-          <caret line="2061" column="15" selection-start-line="2061" selection-start-column="15" selection-end-line="2061" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/01_随机森林案例一：宫颈癌预测.ipynb">
       <provider selected="true" editor-type-id="jupyter-editor" />
     </entry>
@@ -168,6 +134,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="155" column="17" selection-start-line="155" selection-start-column="4" selection-end-line="155" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://E:/Python/Python37/Lib/site-packages/sklearn/model_selection/_split.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="38855">
+          <caret line="2061" column="15" selection-start-line="2061" selection-start-column="15" selection-end-line="2061" selection-end-column="15" />
         </state>
       </provider>
     </entry>
